@@ -7,38 +7,36 @@ const substitutionModule = (function () {
   // you can add any code you want within this function scope
 
   function substitution(input, alphabet, encode = true) {
-    const letters = "abcdefghijklmnopqrstuvwxyz".split('')
-    if (!alphabet || alphabet.length < 26) return false
-    const alphabetSplit = alphabet.split('')
-    let alphabetSize = new Set(alphabetSplit)
-    if(alphabetSize.size < 26) return false  
-    const inputLowerCase = input.toLowerCase()
-    let encodedInput = ""
-    if (encode){
-      for(let i = 0; i < inputLowerCase.length; i++){
-        if(inputLowerCase[i] === " ") {
-          encodedInput += inputLowerCase[i]
+    const letters = "abcdefghijklmnopqrstuvwxyz".split("");
+    if (!alphabet || alphabet.length < 26) return false;
+    const alphabetSplit = alphabet.split("");
+    let alphabetSize = new Set(alphabetSplit);
+    if (alphabetSize.size < 26) return false;
+    const inputLowerCase = input.toLowerCase();
+    let encodedInput = "";
+    if (encode) {
+      for (let i = 0; i < inputLowerCase.length; i++) {
+        if (inputLowerCase[i] === " ") {
+          encodedInput += inputLowerCase[i];
         } else {
-       let letter = inputLowerCase[i]
-       let num = letters.findIndex((element) => element === letter)
-       encodedInput += alphabet[num]
-}
-}
-return encodedInput 
-
-  }
-    if (!encode){
-      for(let i = 0; i < inputLowerCase.length; i++){
-        if(inputLowerCase[i] === " ") {
-          encodedInput += inputLowerCase[i]
-        } else {
-        let letter = inputLowerCase[i]
-        let num = alphabetSplit.findIndex((element)=> element === letter); 
-        encodedInput += letters[num]
+          let letter = inputLowerCase[i];
+          let num = letters.findIndex((element) => element === letter);
+          encodedInput += alphabet[num];
         }
       }
-          return encodedInput
-
+      return encodedInput;
+    }
+    if (!encode) {
+      for (let i = 0; i < inputLowerCase.length; i++) {
+        if (inputLowerCase[i] === " ") {
+          encodedInput += inputLowerCase[i];
+        } else {
+          let letter = inputLowerCase[i];
+          let num = alphabetSplit.findIndex((element) => element === letter);
+          encodedInput += letters[num];
+        }
+      }
+      return encodedInput;
     }
   }
   return {
